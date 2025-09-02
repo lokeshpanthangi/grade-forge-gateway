@@ -2,57 +2,85 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* University Course Management System Design System */
+/* All colors MUST be HSL for perfect theming */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-
+    /* Core Brand Colors (Violet Theme) */
+    --primary: 248 92% 68%;          /* #6366f1 - Violet */
+    --primary-foreground: 0 0% 100%; /* White text on violet */
+    --primary-hover: 248 92% 63%;    /* Darker violet for hover */
+    --primary-light: 248 92% 75%;    /* Lighter violet for subtle elements */
+    
+    /* Secondary & Neutrals */
+    --secondary: 217 19% 21%;        /* #1f2937 - Dark Gray */
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 217 19% 35%;  /* Lighter version for hover */
+    
+    /* Backgrounds */
+    --background: 0 0% 100%;         /* #ffffff - White */
+    --surface: 220 14% 98%;          /* #f9fafb - Light Gray */
+    --surface-elevated: 0 0% 100%;   /* White for cards */
+    
+    /* Text Colors */
+    --foreground: 217 33% 17%;       /* #111827 - Near Black */
+    --text-secondary: 217 10% 47%;   /* #6b7280 - Medium Gray */
+    --text-muted: 217 10% 64%;       /* Lighter gray for captions */
+    
+    /* Interactive Elements */
+    --border: 220 13% 91%;           /* #e5e7eb - Light Gray */
+    --input: 220 13% 91%;
+    --ring: 248 92% 68%;             /* Violet focus ring */
+    --ring-offset: 0 0% 100%;
+    
+    /* Status Colors */
+    --success: 158 64% 52%;          /* #059669 - Green */
+    --success-foreground: 0 0% 100%;
+    --success-light: 158 64% 95%;    /* Light green background */
+    
+    --destructive: 0 74% 58%;        /* #dc2626 - Red */
+    --destructive-foreground: 0 0% 100%;
+    --destructive-light: 0 74% 95%;  /* Light red background */
+    
+    --warning: 43 96% 56%;           /* Orange for warnings */
+    --warning-foreground: 43 96% 10%;
+    --warning-light: 43 96% 95%;
+    
+    /* Card & Components */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --card-foreground: 217 33% 17%;
+    --card-shadow: 217 10% 47% / 0.1;
+    --card-shadow-hover: 217 10% 47% / 0.15;
+    
+    /* Sidebar Specific */
+    --sidebar-background: 217 19% 21%;     /* Dark gray background */
+    --sidebar-foreground: 0 0% 100%;       /* White text */
+    --sidebar-accent: 248 92% 68%;         /* Violet for active items */
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 217 19% 25%;         /* Slightly lighter border */
+    --sidebar-hover: 217 19% 25%;          /* Hover state */
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(248 92% 68%), hsl(250 84% 54%));
+    --gradient-surface: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+    --gradient-violet-soft: linear-gradient(135deg, hsl(248 92% 95%), hsl(250 84% 92%));
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(217 10% 47% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(217 10% 47% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(217 10% 47% / 0.1);
+    --shadow-xl: 0 20px 25px -5px hsl(217 10% 47% / 0.1);
+    --shadow-violet: 0 10px 25px -5px hsl(248 92% 68% / 0.3);
+    
+    /* Animation Timing */
+    --transition-base: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    --radius: 0.75rem;               /* Slightly more rounded */
+    --radius-sm: 0.5rem;
+    --radius-lg: 1rem;
   }
 
   .dark {
@@ -100,6 +128,208 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-medium;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Typography Scale */
+  .text-display {
+    @apply text-4xl font-bold tracking-tight;
+  }
+  
+  .text-title {
+    @apply text-2xl font-semibold tracking-tight;
+  }
+  
+  .text-subtitle {
+    @apply text-lg font-medium;
+  }
+  
+  .text-body {
+    @apply text-base;
+  }
+  
+  .text-caption {
+    @apply text-sm text-text-secondary;
+  }
+  
+  .text-micro {
+    @apply text-xs text-text-muted;
+  }
+}
+
+@layer components {
+  /* Card Components */
+  .card-elevated {
+    @apply bg-surface-elevated rounded-radius border border-border shadow-md;
+    box-shadow: var(--shadow-md);
+    transition: var(--transition-base);
+  }
+  
+  .card-elevated:hover {
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-1px);
+  }
+  
+  .card-hero {
+    @apply bg-gradient-to-br from-primary to-primary-hover text-primary-foreground;
+    box-shadow: var(--shadow-violet);
+  }
+  
+  /* Metric Cards */
+  .metric-card {
+    @apply card-elevated p-6 space-y-2;
+  }
+  
+  .metric-value {
+    @apply text-3xl font-bold text-primary;
+  }
+  
+  .metric-label {
+    @apply text-sm font-medium text-text-secondary;
+  }
+  
+  .metric-change {
+    @apply text-xs px-2 py-1 rounded-full font-medium;
+  }
+  
+  .metric-change.positive {
+    @apply bg-success-light text-success;
+  }
+  
+  .metric-change.negative {
+    @apply bg-destructive-light text-destructive;
+  }
+  
+  /* Interactive Elements */
+  .btn-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary-hover;
+    @apply px-4 py-2 rounded-radius font-medium transition-all duration-200;
+    @apply shadow-sm hover:shadow-md focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  .btn-secondary {
+    @apply bg-secondary text-secondary-foreground hover:bg-secondary-light;
+    @apply px-4 py-2 rounded-radius font-medium transition-all duration-200;
+    @apply shadow-sm hover:shadow-md focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  .btn-outline {
+    @apply border border-border bg-surface-elevated hover:bg-surface;
+    @apply text-foreground hover:text-primary;
+    @apply px-4 py-2 rounded-radius font-medium transition-all duration-200;
+    @apply focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  .btn-ghost {
+    @apply text-text-secondary hover:text-foreground hover:bg-surface;
+    @apply px-4 py-2 rounded-radius font-medium transition-all duration-200;
+    @apply focus:ring-2 focus:ring-ring focus:ring-offset-2;
+  }
+  
+  /* Form Elements */
+  .form-input {
+    @apply w-full px-3 py-2 rounded-radius border border-input;
+    @apply bg-surface-elevated text-foreground placeholder:text-text-muted;
+    @apply focus:ring-2 focus:ring-ring focus:border-transparent;
+    @apply transition-all duration-200;
+  }
+  
+  .form-label {
+    @apply text-sm font-medium text-foreground mb-2 block;
+  }
+  
+  .form-error {
+    @apply text-destructive text-sm mt-1;
+  }
+  
+  .form-helper {
+    @apply text-text-muted text-sm mt-1;
+  }
+  
+  /* Status Indicators */
+  .status-badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+  
+  .status-badge.success {
+    @apply bg-success-light text-success;
+  }
+  
+  .status-badge.warning {
+    @apply bg-warning-light text-warning-foreground;
+  }
+  
+  .status-badge.error {
+    @apply bg-destructive-light text-destructive;
+  }
+  
+  .status-badge.info {
+    @apply bg-gradient-violet-soft text-primary;
+  }
+  
+  /* Progress Indicators */
+  .progress-bar {
+    @apply w-full h-2 bg-surface rounded-full overflow-hidden;
+  }
+  
+  .progress-fill {
+    @apply h-full bg-gradient-to-r from-primary to-primary-hover transition-all duration-500;
+  }
+  
+  /* Animations */
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+  
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+  }
+  
+  .animate-scale-in {
+    animation: scaleIn 0.2s ease-out forwards;
+  }
+  
+  /* Loading States */
+  .skeleton {
+    @apply bg-surface animate-pulse rounded-radius;
+  }
+  
+  .spinner {
+    @apply inline-block animate-spin rounded-full border-2 border-surface border-t-primary;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
   }
 }
